@@ -1,0 +1,46 @@
+{
+	"Description" : "Enables CloudTrail User Activity Logging",
+	
+	"Parameters" : {
+		"S3BucketName" : {
+			"Description" : "S3 Bucket to store CloudTrail logs",
+			"Type" : "String"
+		},
+		"S3KeyPrefix" : {
+			"Description" : "Prefix to add to log files to allow multiple logs in a single bucket",
+			"Type" : "String",
+			"Default" : ""
+		}
+	},
+
+	"Conditions" : {
+		"DontPrefixBucket" : {
+			"Fn::Equals" : [{"Ref" : "S3KeyPrefix"}, ""]
+		},
+		"PrefixBucket" : {
+			"Fn::Not" : [{"Fn::Equals" : [{"Ref" : "S3KeyPrefix"}, ""]}]
+		}
+	},
+
+	"Resources" : {
+		"CloudTrailWithPrefix" : {
+			"Type" : "AWS::CloudTrail::Trail",
+			"Condition" : "PrefixBucket",
+			"Properties" : {
+				"IncludeGlobalServiceEvents" : "True",
+				"IsLogging" : "True",
+				"S3BucketName" : { "Ref" : "S3BucketName" },
+				"S3KeyPrefix" : { "Ref" : "S3KeyPrefix" }
+			}
+		},
+		"CloudTrailWithoutPrefix" : {
+			"Type" : "AWS::CloudTrail::Trail",
+			"Condition" : "DontPrefixBucket",
+			"Properties" : {
+				"IncludeGlobalServiceEvents" : "True",
+				"IsLogging" : "True",
+				"S3BucketName" : { "Ref" : "S3BucketName" }
+			}
+		}
+	}
+}
