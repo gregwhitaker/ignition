@@ -7,4 +7,4 @@ CloudTrail provides a record of your AWS API calls.  You can use this data to ga
 CloudTrail monitoring can be enabled by running the `setup-cloudtrail.sh` script.
 
 ##Disabling CloudTrail
-
+CloudTrail monitoring can be disabled by running the `teardown-cloudtrail.sh` script.
