@@ -1,6 +1,6 @@
 Identity and Access Management
 ===
-The following will be configured by the IAM scripts.
+The IAM scripts can be used to configure the following:
 * Account Alias
 * Account Password Policy
 * Administrator Group and Role
