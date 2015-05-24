@@ -25,6 +25,9 @@ wait_for_stack() {
     return $RETURN_VAL
 }
 
-function find_cloudformation_bucket() {
-	# This should return the name of a bucket created via cloudformation
+function find_bucket_created_by_cloudformation() {
+	return $(aws --output text cloudformation describe-stack-events --stack-name $1 --region $REGION \
+		| grep $2 \
+		| grep 'CREATE_COMPLETE' \
+		| cut -f 4)
 }
