@@ -10,7 +10,7 @@ source ../utils/s3.sh
 
 # Flush the CloudTrail bucket of data
 BUCKET=find_bucket_created_by_cloudformation $1 CloudTrailBucket
-flush_bucket $BUCKET
+delete_bucket $BUCKET
 
 # Delete the CloudFormation stack that enabled CloudTrail
 aws cloudformation delete-stack --stack-name cloudtrail --region $REGION
