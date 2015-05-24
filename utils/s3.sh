@@ -12,7 +12,7 @@ find_bucket() {
 #/ Deletes an S3 Bucket.
 delete_bucket() {
   BUCKET_NAME=$1
-  echo “Flushing bucket $BUCKET_NAME"
+  echo "Flushing bucket $BUCKET_NAME"
   find_bucket $BUCKET_NAME
   if [ $? -ne 0 ]; then
     echo "Bucket not found"
@@ -20,4 +20,3 @@ delete_bucket() {
     delete_bucket $BUCKET_NAME
   fi
 }
-
