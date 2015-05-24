@@ -1,5 +1,8 @@
 #! /bin/bash
 
+#/ Usage: setup-nested-stacks <bucket>
+#/ Creates an S3 bucket to hold CloudFormation nested stack templates.
+
 source ../utils/environment.sh
 source ../utils/logging.sh
 source ../utils/cloudformation.sh

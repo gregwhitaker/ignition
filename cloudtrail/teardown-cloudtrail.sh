@@ -8,15 +8,15 @@ source ../utils/cloudformation.sh
 source ../utils/logging.sh
 source ../utils/s3.sh
 
-# Flush the CloudTrail bucket of data
-find_bucket_created_by_cloudformation $1 CloudTrailBucket
+# Delete the CloudTrail bucket
+find_bucket_created_by_cloudformation cloudtrail-s3 CloudTrailBucket
 delete_bucket $BUCKET
 
 # Delete the CloudFormation stack that enabled CloudTrail
-aws cloudformation delete-stack --stack-name cloudtrail --region $REGION
+aws cloudformation delete-stack --stack-name "cloudtrail" --region $REGION
 
 # Delete the CloudFormation stack that configured the S3 bucket policy for CloudTrail
-aws cloudformation delete-stack --stack-name cloudtrail-s3-policy --region $REGION
+aws cloudformation delete-stack --stack-name "cloudtrail-s3-policy" --region $REGION
 
 # Delete the CloudFormation stack that created the CloudTrail S3 bucket
-aws cloudformation delete-stack --stack-name cloudtrail-s3 --region $REGION
+aws cloudformation delete-stack --stack-name "cloudtrail-s3" --region $REGION
