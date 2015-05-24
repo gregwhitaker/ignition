@@ -1,5 +1,8 @@
 #! /bin/bash
 
+#/ Usage: teardown_cloudtrail <bucket>
+#/ Deletes the CloudTrail bucket, disables CloudTrail and deletes all CloudFormation templates used to enabled CloudTrail.
+
 source ../utils/environment.sh
 source ../utils/cloudformation.sh
 source ../utils/logging.sh
