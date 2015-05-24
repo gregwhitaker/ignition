@@ -24,3 +24,7 @@ wait_for_stack() {
 
     return $RETURN_VAL
 }
+
+function find_cloudformation_bucket() {
+	# This should return the name of a bucket created via cloudformation
+}
