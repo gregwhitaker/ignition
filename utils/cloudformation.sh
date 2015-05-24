@@ -3,7 +3,7 @@
 #/ Usage: wait_for_stack <stack>
 #/ Waits for a CloudFormation stack to complete.
 wait_for_stack() {
-	echo -n "Waiting for '$1' stack to complete "
+	echo -n "$(tput setaf 2)Waiting for '$(tput setaf 3)$1$(tput setaf 2)' stack to complete "
     TEST_CONTENT=$(aws cloudformation describe-stacks --stack-name $1 --region $REGION | grep \"StackStatus\")
 
     CREATE_COMPLETE=$(echo $TEST_CONTENT | grep 'CREATE_COMPLETE' | wc -l)
@@ -17,10 +17,11 @@ wait_for_stack() {
         ROLLBACK=$(echo $TEST_CONTENT | grep 'ROLLBACK_COMPLETE' | wc -l)
     done
 
-    echo ""
+    echo "$(tput sgr0)"
 
     RETURN_VAL=0
     if [ "$ROLLBACK" == "1" ]; then
+        echo -e "$(tput setaf 1)ROLLBACK$(tput sgr0)"
         RETURN_VAL=1
     fi
 

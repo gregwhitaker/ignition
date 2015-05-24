@@ -12,10 +12,10 @@ find_bucket() {
 #/ Deletes an S3 Bucket.
 delete_bucket() {
   BUCKET_NAME=$1
-  echo "Flushing bucket $BUCKET_NAME"
+  echo "$(tput setaf 2)Flushing bucket: $(tput setaf 3)$BUCKET_NAME$(tput sgr0)"
   find_bucket $BUCKET_NAME
   if [ $? -ne 0 ]; then
-    echo "Bucket not found"
+    echo "Bucket not found!"
   else
     aws s3 rm "s3://$BUCKET_NAME" --region $REGION --recursive
   fi
