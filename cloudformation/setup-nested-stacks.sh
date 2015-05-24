@@ -1,5 +1,6 @@
 #! /bin/bash
 
+source ../utils/environment.sh
 source ../utils/logging.sh
 source ../utils/cloudformation.sh
 
