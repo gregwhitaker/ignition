@@ -17,6 +17,6 @@ delete_bucket() {
   if [ $? -ne 0 ]; then
     echo "Bucket not found"
   else
-    delete_bucket $BUCKET_NAME
+    aws s3 rm "s3://$BUCKET_NAME" --region $REGION --recursive
   fi
 }

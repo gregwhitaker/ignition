@@ -30,7 +30,7 @@ wait_for_stack() {
 #/ Usage: find_bucket_created_by_cloudformation <stack> <resource>
 #/ Gets the name of an S3 bucket created using CloudFormation.
 find_bucket_created_by_cloudformation() {
-	return $(aws --output text cloudformation describe-stack-events --stack-name $1 --region $REGION \
+	BUCKET=$(aws --output text cloudformation describe-stack-events --stack-name $1 --region $REGION \
 		| grep $2 \
 		| grep 'CREATE_COMPLETE' \
 		| cut -f 4)
