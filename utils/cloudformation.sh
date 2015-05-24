@@ -1,6 +1,6 @@
 #! /bin/bash
 
-waitForStack() {
+wait_for_stack() {
 	echo -n "Waiting for stack to complete"
     TEST_CONTENT=$(aws cloudformation describe-stacks --stack-name $1 --region $REGION | grep \"StackStatus\")
 

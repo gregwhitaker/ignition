@@ -1,17 +1,17 @@
 #! /bin/bash
 
 # Logs the supplied parameter in ANSI red
-logRed() {
+log_red() {
 	echo -e "$(tput setaf 1)$1$(tput sgr0)"
 }
 
 # Logs the supplied parameter in ANSI yellow
-logYellow() {
+log_yellow() {
 	echo -e "$(tput setaf 3)$1$(tput sgr0)"
 }
 
 # Logs the supplied parameter in ANSI green
-logGreen() {
+log_green() {
 	echo -e "$(tput setaf 2)$1$(tput sgr0)"
 }
 
