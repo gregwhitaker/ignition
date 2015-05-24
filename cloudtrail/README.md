@@ -15,4 +15,4 @@ Enables CloudTrail monitoring and creates an S3 bucket to store CloudTrail logs.
 ##teardown-cloudtrail.sh
 Disables CloudTrail monitoring and removes the S3 bucket used to store CloudTrail logs.
 
-    ./teardown-cloudtrail.sh
+    ./teardown-cloudtrail.sh <bucket>
