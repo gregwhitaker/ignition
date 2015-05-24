@@ -1,5 +1,7 @@
 #! /bin/bash
 
+#/ Usage: wait_for_stack <stack>
+#/ Waits for a CloudFormation stack to complete.
 wait_for_stack() {
 	echo -n "Waiting for stack to complete"
     TEST_CONTENT=$(aws cloudformation describe-stacks --stack-name $1 --region $REGION | grep \"StackStatus\")
@@ -25,7 +27,9 @@ wait_for_stack() {
     return $RETURN_VAL
 }
 
-function find_bucket_created_by_cloudformation() {
+#/ Usage: find_bucket_created_by_cloudformation <stack> <resource>
+#/ Gets the name of an S3 bucket created using CloudFormation.
+find_bucket_created_by_cloudformation() {
 	return $(aws --output text cloudformation describe-stack-events --stack-name $1 --region $REGION \
 		| grep $2 \
 		| grep 'CREATE_COMPLETE' \
