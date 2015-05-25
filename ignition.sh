@@ -3,4 +3,4 @@
 source ./utils/environment.sh
 source ./utils/logging.sh
 
-python ./installer/installer.py
+python ./setup/installer.py
