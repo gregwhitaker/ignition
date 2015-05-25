@@ -16,7 +16,6 @@ Ignition requires the following packages to be installed before use:
 
 * Python 2.6.3 or later
 * Pip
-* AWS CLI
 
 ###Installation
 First, check to see if you already have Python installed:
