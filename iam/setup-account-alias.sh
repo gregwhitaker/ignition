@@ -20,6 +20,8 @@ aws iam create-account-alias --account-alias $1
 
 if [ $? == 0 ]; then
 	echo "$(tput setaf 2)Created Account Alias: $(tput setaf 3)$1$(tput sgr0)"
+	exit 0
 else
 	echo "$(tput setaf 2)Alias '$(tput setaf 3)$1$(tput setaf 2)' already exists!$(tput sgr0)"
+	exit 1
 fi
