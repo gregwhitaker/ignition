@@ -1,1 +1,0 @@
-print "This should be the installer script"

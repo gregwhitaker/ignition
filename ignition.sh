@@ -26,5 +26,5 @@ if [ "$INSTALL" = "YES" ]; then
 	sudo pip install -r ./setup/requirements.txt
 	log_green "Installation Complete!"
 else
-	python ./setup/installer.py
+	python ./setup/setup.py
 fi
