@@ -26,6 +26,6 @@ If you don't have Python installed, download the package from [python.org](https
 
 Next, run the Ignition installer to prepare your system to begin automation of your AWS account:
 
-	$ ./ignition -install
+	$ ./ignition --install
 
 ##Getting Started
