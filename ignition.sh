@@ -1,11 +1,6 @@
 #! /bin/bash
 
+source ./utils/environment.sh
 source ./utils/logging.sh
 
-# Account
-
-# IAM
-
-# Detailed Billing
-
-# CloudTrail
+python ./installer/installer.py
