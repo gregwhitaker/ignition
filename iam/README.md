@@ -31,3 +31,12 @@ Adds a default password policy to the AWS account.
 Removes the default password policy from the AWS account.
 
 	$ ./teardown-account-password-policy.sh
+
+##Administrator Accounts
+Configures groups and roles for administrator accounts.
+
+##User Accounts
+Configures groups and roles for user accounts.
+
+##Readonly Accounts
+Configures groups and roles for readonly accounts.
