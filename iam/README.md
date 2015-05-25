@@ -85,8 +85,24 @@ Removes the user group.
 ##Readonly Accounts
 Configures groups and roles for readonly accounts.
 
-The readonly role has readonly access to the AWS API.
+* The readonly role has readonly access to the AWS API.
 
 ###setup-readonly-role
+Creates a role with readonly access to the AWS API.
+
+	$ ./setup-readonly-role.sh
+
+###teardown-readonly-role
+Removes the readonly role.
+
+	$ ./teardown-readonly-role.sh
 
 ###setup-readonly-group
+Creates a group with the readonly role assigned to it by default.
+
+	$ ./setup-readonly-group.sh
+
+###teardown-readonly-group
+Removes the readonly group.
+
+	$ ./teardown-readonly-group.sh
