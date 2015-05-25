@@ -37,7 +37,7 @@ Ignition provides two different modes for configuring your AWS account.
 ###Interactive Configuration
 Ignition provides an interactive console application to guide you through the configuration process.
 
-	$ ./ignition
+	$ ./ignition [--export-dir <file>]
 
 ###Scripted Configuration
 Ignition provides a scripted configuration process that loads a specially formatted configuration file and 
