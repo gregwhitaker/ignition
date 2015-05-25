@@ -21,3 +21,13 @@ Adds an account alias to the AWS account.  This allows you to refer to the accou
 Removes the account alias from the AWS account.
 
     $ ./teardown-account-alias.sh <alias>
+
+###setup-account-password-policy
+Adds a default password policy to the AWS account.
+
+	$ ./setup-account-password-policy.sh
+
+###teardown-account-password-policy
+Removes the default password policy from the AWS account.
+
+	$ ./teardown-account-password-policy.sh
