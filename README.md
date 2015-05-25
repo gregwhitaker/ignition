@@ -5,6 +5,7 @@ Ignition allows you to automate the creation and setup of the following:
 
 * VPC Layout
 * IAM Groups and Roles
+* CloudFormation
 * CloudTrail
 * Config
 * KMS
