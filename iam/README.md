@@ -35,8 +35,36 @@ Removes the default password policy from the AWS account.
 ##Administrator Accounts
 Configures groups and roles for administrator accounts.
 
+###setup-admin-role
+Creates a role with administrator access (includes IAM management).
+
+	$ ./setup-admin-role.sh
+
+###teardown-admin-role
+Removes the administrator role.
+
+	$ ./teardown-admin-role.sh
+
+###setup-admin-group
+Creates a group with the administrator role assigned to it by default.
+
+	$ ./setup-admin-group.sh
+
+###teardown-admin-group
+Removes the administrator group.
+
+	$ ./teardown-admin-group.sh
+
 ##User Accounts
 Configures groups and roles for user accounts.
 
+###setup-user-role
+
+###setup-user-group
+
 ##Readonly Accounts
 Configures groups and roles for readonly accounts.
+
+###setup-readonly-role
+
+###setup-readonly-group
