@@ -15,4 +15,13 @@ if [ -z "$1" ]; then
 	exit 1
 fi
 
+# Deleting Account Alias
 aws iam delete-account-alias --account-alias $1
+
+if [ $? == 0 ]; then
+	echo "$(tput setaf 2)Deleted Account Alias: $(tput setaf 3)$1$(tput sgr0)"
+	exit 0
+else
+	echo "$(tput setaf 2)Alias '$(tput setaf 3)$1$(tput setaf 2)' does not exist!$(tput sgr0)"
+	exit 1
+fi
