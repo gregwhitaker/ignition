@@ -1,2 +1,1 @@
-# Ignition Requirements
 awscli
