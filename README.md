@@ -1,4 +1,5 @@
-# Ignition
+#Ignition
+An interactive or scriptable installer for automating the configuration of AWS accounts.
 
 ##Prerequisites
 Ignition requires the following packages to be installed before use:
@@ -10,4 +11,4 @@ First, check to see if you already have Python installed:
 	
 	$ python --version
 	
-If you don't have Python installed, download the package from [python.org](https://www.python.org/downloads/) and run the installer or use your distribution's package manager. These installers include Pip.
+If you don't have Python installed, download the package from [python.org](https://www.python.org/downloads/) and run the installer or use your distribution's package manager.
