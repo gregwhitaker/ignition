@@ -10,7 +10,7 @@ The IAM scripts can be used to configure the following:
 * Readonly Group and Role
 
 ##setup-account-alias
-Adds an account alias to the AWS account.  This allows you to refer to the account by a friendly name and not the account number.
+Adds an account alias to the AWS account.  This allows you to refer to the account by a friendly name instead of the account number.
 
     $ ./setup-account-alias.sh <alias>
     
