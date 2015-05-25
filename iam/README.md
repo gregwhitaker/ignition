@@ -63,11 +63,29 @@ Configures groups and roles for user accounts.
 The user role has full access to the AWS API, excluding IAM management.
 
 ###setup-user-role
+Creates a role with full access to the AWS API, excluding IAM management.
+
+	$ ./setup-user-role.sh
+
+###teardown-user-role
+Removes the user role.
+
+	$ ./teardown-user-role.sh
 
 ###setup-user-group
+Creates a group with the user role assigned to it by default.
+
+	$ ./setup-user-group.sh
+
+###teardown-user-role
+Removes the user group.
+
+	$ ./teardown-user-group.sh
 
 ##Readonly Accounts
 Configures groups and roles for readonly accounts.
+
+The readonly role has readonly access to the AWS API.
 
 ###setup-readonly-role
 
