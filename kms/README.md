@@ -7,7 +7,11 @@ Creates a master encryption key in KMS.
 
 	$ ./setup-master-key [alias]
 
+If a key alias is not supplied the script assumes an alias of "master".
+
 ##teardown-master-key
 Disables a master encryption key in KMS.
 
 	$ ./teardown-master-key [alias]
+
+If a key alias is not supplied the script assumes an alias of "master".
