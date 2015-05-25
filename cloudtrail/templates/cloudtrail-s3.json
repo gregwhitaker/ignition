@@ -1,26 +1,27 @@
 {
-	"Description" : "Creates an S3 Bucket to store CloudTrail logs",
-
-	"Parameters" : {
-		"S3BucketName" : {
-			"Description" : "Name of the S3 Bucket to store CloudTrail logs",
-			"Type" : "String"
-		}
-	},
-
-	"Resources" : {
-		"CloudTrailBucket" : {
-			"Type" : "AWS::S3::Bucket",
-			"Properties" : {
-				"BucketName" : { "Ref" : "S3BucketName" }
-			}
-		}
-	},
-
-	"Outputs" : {
-		"S3BucketName" : {
-			"Description" : "Name of the created CloudTrail Bucket",
-			"Value" : { "Ref" : "CloudTrailBucket" }
-		}
-	}
+   "Description":"Creates an S3 Bucket to store CloudTrail logs",
+   "Parameters":{
+      "S3BucketName":{
+         "Description":"Name of the S3 Bucket to store CloudTrail logs",
+         "Type":"String"
+      }
+   },
+   "Resources":{
+      "CloudTrailBucket":{
+         "Type":"AWS::S3::Bucket",
+         "Properties":{
+            "BucketName":{
+               "Ref":"S3BucketName"
+            }
+         }
+      }
+   },
+   "Outputs":{
+      "S3BucketName":{
+         "Description":"Name of the created CloudTrail Bucket",
+         "Value":{
+            "Ref":"CloudTrailBucket"
+         }
+      }
+   }
 }

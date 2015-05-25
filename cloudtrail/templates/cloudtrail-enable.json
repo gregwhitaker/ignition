@@ -1,6 +1,5 @@
 {
 	"Description" : "Enables CloudTrail User Activity Logging",
-	
 	"Parameters" : {
 		"S3BucketName" : {
 			"Description" : "S3 Bucket to store CloudTrail logs",
@@ -12,7 +11,6 @@
 			"Default" : ""
 		}
 	},
-
 	"Conditions" : {
 		"DontPrefixBucket" : {
 			"Fn::Equals" : [{"Ref" : "S3KeyPrefix"}, ""]
@@ -21,7 +19,6 @@
 			"Fn::Not" : [{"Fn::Equals" : [{"Ref" : "S3KeyPrefix"}, ""]}]
 		}
 	},
-
 	"Resources" : {
 		"CloudTrailWithPrefix" : {
 			"Type" : "AWS::CloudTrail::Trail",
