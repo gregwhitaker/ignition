@@ -1,5 +1,14 @@
 #Ignition
-An interactive or scriptable installer for automating the configuration of AWS accounts.
+A scriptable installer for automating the configuration of AWS accounts.
+
+Ignition allows you to automate the creation and setup of the following:
+
+* VPC Layout
+* IAM Groups and Roles
+* CloudTrail
+* Config
+* KMS
+* Security Groups
 
 ##Prerequisites
 Ignition requires the following packages to be installed before use:
