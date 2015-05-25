@@ -14,16 +14,14 @@ else
 fi
 
 # Checking to see if the requested alias is already taken
-OUTPUT=$(aws --output text kms list-aliases --region $REGION \
-	| grep 'alias/$ALIAS')
+KEY_ID=$(aws --output text kms list-aliases --region "$REGION" \
+	| grep "alias/$ALIAS" \
+	| cut -f 4)
 
-if [ -z $OUTPUT ]; then
+if [ -z $KEY_ID ]; then
 	echo "$(tput setaf 2)A key with alias '$(tput setaf 3)$ALIAS$(tput setaf 2)' cannot be found!$(tput sgr0)"
 	exit 2
 else
-	KEY_ID=$($OUTPUT \
-		| grep 'alias/$ALIAS' \
-		| cut -f 4)
-	
+	# Disable the master key
 	aws kms disable-key --key-id "$KEY_ID"
 fi
