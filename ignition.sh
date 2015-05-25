@@ -1,5 +1,8 @@
 #! /bin/bash
 
+#/ Usage: ignition [--install]
+#/ Installs Ignition and starts the configuration wizard.
+
 source ./utils/environment.sh
 source ./utils/logging.sh
 
