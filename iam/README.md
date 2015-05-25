@@ -35,7 +35,7 @@ Removes the default password policy from the AWS account.
 ##Administrator Accounts
 Configures groups and roles for administrator accounts. 
 
-* The adminstrator role has full access to the AWS API, including IAM management.
+* Adminstrator accounts have full access to the AWS API, including IAM management.
 
 ###setup-admin-role
 Creates a role with administrator access to the AWS API, including IAM management.
@@ -60,7 +60,7 @@ Removes the administrator group.
 ##User Accounts
 Configures groups and roles for user accounts.  
 
-* The user role has full access to the AWS API, excluding IAM management.
+* User accounts have full access to the AWS API, excluding IAM management.
 
 ###setup-user-role
 Creates a role with full access to the AWS API, excluding IAM management.
@@ -85,7 +85,7 @@ Removes the user group.
 ##Readonly Accounts
 Configures groups and roles for readonly accounts.
 
-* The readonly role has readonly access to the AWS API.
+* Readonly accounts have readonly access to the AWS API.
 
 ###setup-readonly-role
 Creates a role with readonly access to the AWS API.
