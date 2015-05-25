@@ -40,5 +40,7 @@ Ignition provides an interactive console application to guide you through the co
 	$ ./ignition
 
 ###Scripted Configuration
+Ignition provides a scripted configuration process that loads a specially formatted configuration file and 
+configures the account in a headless process.
 
 	$ ./ignition --configuration-file <file>
