@@ -29,6 +29,11 @@ Run the Ignition installer to prepare your system to begin automation of your AW
 	$ ./ignition.sh --install
 
 ##Getting Started
+Ignition provides two different modes for configuring your AWS account.
+
+* Interactive - Console application that guides you through the configuration process.
+* Scripted - Loads a configuration file and configures the account in a headless process.
+
 ###Interactive Configuration
 Ignition provides an interactive console application to guide you through the configuration process.
 
