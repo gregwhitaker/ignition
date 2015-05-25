@@ -33,10 +33,10 @@ Removes the default password policy from the AWS account.
 	$ ./teardown-account-password-policy.sh
 
 ##Administrator Accounts
-Configures groups and roles for administrator accounts.
+Configures groups and roles for administrator accounts. The adminstrator role has full access to the AWS API, including IAM management.
 
 ###setup-admin-role
-Creates a role with administrator access (includes IAM management).
+Creates a role with administrator access to the AWS API, including IAM management.
 
 	$ ./setup-admin-role.sh
 
@@ -56,7 +56,7 @@ Removes the administrator group.
 	$ ./teardown-admin-group.sh
 
 ##User Accounts
-Configures groups and roles for user accounts.
+Configures groups and roles for user accounts.  The user role has full access to the AWS API, excluding IAM management.
 
 ###setup-user-role
 
