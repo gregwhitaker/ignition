@@ -19,7 +19,7 @@
             },
             "Policies":[
                {
-                  "PolicyName":"user",
+                  "PolicyName":"User",
                   "PolicyDocument":{
                      "Statement":[
                         {

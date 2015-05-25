@@ -19,7 +19,7 @@
             },
             "Policies":[
                {
-                  "PolicyName":"readonly",
+                  "PolicyName":"Readonly",
                   "PolicyDocument":{
                      "Statement":[
                         {
