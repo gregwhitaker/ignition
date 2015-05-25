@@ -4,7 +4,7 @@ AWS Config is a fully managed service that provides you with an AWS resource inv
 
 The Config scripts can be used to configure the following:
 
-* Enable Config
+* Enable / Disable Config
 
 ##setup-config
 Enables AWS Config on the account.
