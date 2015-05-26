@@ -21,12 +21,12 @@ wait_for_stack() {
         ROLLBACK=$(echo $TEST_CONTENT | grep 'ROLLBACK_COMPLETE' | wc -l)
     done
 
-    echo ""
-
     RETURN_VAL=0
     if [ "$ROLLBACK" == "1" ]; then
         echo -e "$(tput setaf 1)ROLLBACK$(tput sgr0)"
         RETURN_VAL=1
+    else
+        echo " $(tput setaf 2)[$(tput setaf 3) COMPLETE $(tput setaf 2)]$(tput sgr0)"
     fi
 
     return $RETURN_VAL
