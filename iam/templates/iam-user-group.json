@@ -1,18 +1,26 @@
 {
-   "Description":"IAM group for admin users",
+   "Description":"IAM group for users",
    "Resources":{
-      "AdminGroup":{
+      "UserGroup":{
          "Type":"AWS::IAM::Group",
          "Properties":{
             "Path":"/",
             "Policies":[
                {
-                  "PolicyName":"Administrator",
+                  "PolicyName":"User",
                   "PolicyDocument":{
                      "Statement":[
                         {
                            "Effect":"Allow",
-                           "Action":"*",
+                           "NotAction":"iam:*",
+                           "Resource":"*"
+                        },
+                        {
+                           "Effect":"Allow",
+                           "Action":[
+                              "iam:List*",
+                              "iam:Get*"
+                           ],
                            "Resource":"*"
                         }
                      ]
