@@ -17,5 +17,6 @@ if [ -z "$1" ]; then
 	exit 1
 fi
 
+# Creating S3 Bucket
 aws cloudformation create-stack --stack-name nested-stacks-s3 --template-body file://./templates/nested-stacks-s3.json --region $REGION --parameters ParameterKey=S3BucketName,ParameterValue=$1
 wait_for_stack "nested-stacks-s3"
