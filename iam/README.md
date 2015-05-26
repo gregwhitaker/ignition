@@ -27,6 +27,17 @@ Adds a default password policy to the AWS account.
 
 	$ ./setup-account-password-policy.sh
 
+The default password policy is:
+
+* Minimum password length of 8 characters
+* Require at least one special character
+* Require at least one number
+* Require at least one uppercase letter
+* Require at least one lowercase letter
+* No password expiry
+* User's are allowed to change their passwords
+* User's new passwords cannot match their 6 most recent passwords
+
 ###teardown-account-password-policy
 Removes the default password policy from the AWS account.
 

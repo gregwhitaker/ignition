@@ -3,7 +3,7 @@
 #/ Usage: setup-account-password-policy
 #/ Sets the account password policy to the following:
 #/   - Minimum Password Length: 8
-#/	 - Require Symbols: Yes
+#/   - Require Symbols: Yes
 #/   - Require Numbers: Yes
 #/   - Require Uppercase: Yes
 #/   - Require Lowercase: Yes
