@@ -6,6 +6,7 @@ The Config scripts can be used to configure the following:
 
 * Enable / Disable Config
 * Setup Config S3 Bucket
+* Setup Config SNS Topic
 * Create Config Role
 
 ##setup-config
