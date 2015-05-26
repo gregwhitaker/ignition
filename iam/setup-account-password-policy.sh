@@ -1,7 +1,7 @@
 #! /bin/bash
 
 #/ Usage: setup-account-password-policy
-#/ Sets the accounts password policy to the following:
+#/ Sets the account password policy to the following:
 #/   - Minimum Password Length: 8
 #/	 - Require Symbols: Yes
 #/   - Require Numbers: Yes
@@ -13,6 +13,7 @@
 
 source ../utils/logging.sh
 
+# Creating the Password Policy
 aws iam update-account-password-policy \
 	--minimum-password-length 8 \
 	--require-symbols \
