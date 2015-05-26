@@ -36,9 +36,9 @@ wait_for_stack() {
 #/ Gets the name of the resource created using CloudFormation.
 find_resource_created_by_cloudformation() {
     CF_RESX=$(aws --output text cloudformation describe-stack-events --stack-name $1 --region $REGION \
-		| grep $2 \
-		| grep 'CREATE_COMPLETE' \
-		| cut -f 4)
+        | grep $2 \
+        | grep 'CREATE_COMPLETE' \
+        | cut -f 4)
 }
 
 #/ Usage: find_arn_created_by_cloudformation <stack> <resource>
