@@ -1,0 +1,30 @@
+{
+   "Description":"Creates an SNS Topic that will be notified of Config changes",
+   "Parameters":{
+      "SNSTopicName":{
+         "Description":"Name of the SNS Topic to notify of Config changes",
+         "Type":"String"
+      }
+   },
+   "Resources":{
+      "ConfigTopic":{
+         "Type":"AWS::SNS::Topic",
+         "Properties":{
+            "DisplayName":{
+               "Ref":"SNSTopicName"
+            },
+            "TopicName" : {
+               "Ref":"SNSTopicName"
+            }
+         }
+      }
+   },
+   "Outputs":{
+      "SNSTopicName":{
+         "Description":"Name of the created SNS Topic",
+         "Value":{
+            "Ref":"ConfigTopic"
+         }
+      }
+   }
+}
