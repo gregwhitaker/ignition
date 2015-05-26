@@ -13,7 +13,6 @@ The IAM scripts can be used to configure the following:
 Configures policies that are applicable to the entire AWS account.
 
 ###setup-account-alias
--
 Adds an account alias to the AWS account.  This allows you to refer to the account by a friendly name instead of the account number.
 
     $ ./setup-account-alias.sh <alias>
