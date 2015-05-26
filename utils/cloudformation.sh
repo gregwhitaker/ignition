@@ -23,7 +23,7 @@ wait_for_stack() {
 
     RETURN_VAL=0
     if [ "$ROLLBACK" == "1" ]; then
-        echo -e "$(tput setaf 1)ROLLBACK$(tput sgr0)"
+        echo " $(tput setaf 2)[$(tput setaf 1) ROLLBACK $(tput setaf 2)]$(tput sgr0)"
         RETURN_VAL=1
     else
         echo " $(tput setaf 2)[$(tput setaf 3) COMPLETE $(tput setaf 2)]$(tput sgr0)"
