@@ -7,11 +7,11 @@ The Billing and Cost Management scripts can be used to configure the following:
 * Create S3 bucket to store detailed billing reports.
 
 ##setup-detailed-billing
-Creates an S3 bucket to store detailed billing reports.
+Creates an S3 bucket to store detailed billing reports and the associated bucket policy.
 
 	$ ./setup-detailed-billing <bucket>
 
 ##teardown-detailed-billing
-Deletes the S3 bucket that stores detailed billing reports.
+Deletes the S3 bucket that stores detailed billing reports and the associated bucket policy.
 
 	$ ./teardown-detailed-billing <bucket>
