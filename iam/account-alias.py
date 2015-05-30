@@ -77,5 +77,7 @@ if __name__ == '__main__':
 
     if args.setup:
         account_alias.setup()
-    else:
+    elif args.teardown:
         account_alias.teardown()
+    else:
+        parser.error('No action requested, add --setup or --teardown')
