@@ -39,12 +39,6 @@ class ReadonlyRole:
 
         print(Fore.GREEN + "Removed '" + Fore.YELLOW + self.role_name + Fore.GREEN + "' role!" + Fore.RESET)
 
-    def __load_policy(self, path):
-        with open (path, "r") as policyFile:
-            data = policyFile.read().replace('\n', '')
-
-        return data
-
 if __name__ == '__main__':
     if __package__ is None:
         import sys
