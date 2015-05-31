@@ -2,16 +2,16 @@ Key Management Service
 ===
 AWS Key Management Service (KMS) is a managed service that makes it easy for you to create and control the encryption keys used to encrypt your data.
 
-##setup-master-key
+##Setup Master Key
 Creates a master encryption key in KMS.
 
-	$ ./setup-master-key [alias]
+	$ python master_key.py --setup --region REGION [--alias ALIAS]
 
 If a key alias is not supplied the script assumes an alias of "master".
 
-##teardown-master-key
+##Teardown Master Key
 Disables a master encryption key in KMS.
 
-	$ ./teardown-master-key [alias]
+	$ python master_key.py --teardown --region REGION [--alias ALIAS]
 
 If a key alias is not supplied the script assumes an alias of "master".
