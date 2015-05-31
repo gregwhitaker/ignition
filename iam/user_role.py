@@ -7,7 +7,7 @@ class UserRole:
     """
     Class responsible for adding and removing the user role.
     """
-    __role_name = 'User'
+    role_name = 'User'
     __policy_name = 'User'
     __policy_file_name = 'iam-user-role.json'
     __assumerole_policy_file_name = 'iam-user-assumerole.json'
@@ -18,10 +18,12 @@ class UserRole:
         """
         conn = boto.iam.IAMConnection()
 
-        conn.create_role(self.__role_name, self.__load_policy("./policies/" + self.__assumerole_policy_file_name))
-        conn.put_role_policy(self.__role_name, self.__policy_name, self.__load_policy("./policies/" + self.__policy_file_name))
+        iamutils = IAMUtils()
 
-        print(Fore.GREEN + "Created '" + Fore.YELLOW + self.__role_name + Fore.GREEN + "' role!" + Fore.RESET)
+        conn.create_role(self.role_name, iamutils.load_policy(self.__assumerole_policy_file_name))
+        conn.put_role_policy(self.role_name, self.__policy_name, iamutils.load_policy(self.__policy_file_name))
+
+        print(Fore.GREEN + "Created '" + Fore.YELLOW + self.role_name + Fore.GREEN + "' role!" + Fore.RESET)
 
     def teardown(self):
         """
@@ -29,13 +31,13 @@ class UserRole:
         """
         conn = boto.iam.IAMConnection()
 
-        conn.delete_role_policy(self.__role_name, self.__policy_name)
+        conn.delete_role_policy(self.role_name, self.__policy_name)
 
-        print(Fore.GREEN + "Removed '" + Fore.YELLOW + self.__role_name + Fore.GREEN + "' role policy!" + Fore.RESET)
+        print(Fore.GREEN + "Removed '" + Fore.YELLOW + self.role_name + Fore.GREEN + "' role policy!" + Fore.RESET)
 
-        conn.delete_role(self.__role_name)
+        conn.delete_role(self.role_name)
 
-        print(Fore.GREEN + "Removed '" + Fore.YELLOW + self.__role_name + Fore.GREEN + "' role!" + Fore.RESET)
+        print(Fore.GREEN + "Removed '" + Fore.YELLOW + self.role_name + Fore.GREEN + "' role!" + Fore.RESET)
 
     def __load_policy(self, path):
         with open (path, "r") as policyFile:
@@ -49,12 +51,14 @@ if __name__ == '__main__':
         from os import path
         sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
         from utils.logging import log_error
+        from iam_utils import IAMUtils
 
         # Initializing colorama because this method is currently being called
         # as a top-level script and not a module.
         init()
     else:
         from utils.logging import log_error
+        from iam_utils import IAMUtils
 
     parser = argparse.ArgumentParser(description="Adds or removes the user role from the account.")
 

@@ -1,5 +1,5 @@
 import argparse
-from colorama import Fore, Back, Style, init
+from colorama import Fore, init
 import boto.iam
 import boto.exception
 
