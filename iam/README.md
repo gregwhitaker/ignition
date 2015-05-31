@@ -22,10 +22,10 @@ Removes the account alias from the AWS account.
 
     $ python account_alias.py --teardown --alias ALIAS
 
-###setup-account-password-policy
+###Setup Account Password Policy
 Adds a default password policy to the AWS account.
 
-	$ ./setup-account-password-policy.sh
+    $ python account_password_policy.py --setup
 
 The default password policy is:
 
@@ -38,10 +38,10 @@ The default password policy is:
 * User's are allowed to change their passwords
 * User's new passwords cannot match their 6 most recent passwords
 
-###teardown-account-password-policy
+###Teardown Account Password Policy
 Removes the default password policy from the AWS account.
 
-	$ ./teardown-account-password-policy.sh
+    $ python account_password_policy.py --teardown
 
 ##Administrator Accounts
 Configures groups and roles for administrator accounts. 
