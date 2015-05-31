@@ -69,7 +69,7 @@ if __name__ == '__main__':
     command_group.add_argument("-s", "--setup", help="Adds the alias to the account.", action="store_true")
     command_group.add_argument("-t", "--teardown", help="Removes the alias from the account.", action="store_true")
 
-    parser.add_argument("alias", help="The account alias")
+    parser.add_argument("--alias", required=True, action="store", dest="alias", help="The account alias")
 
     args = parser.parse_args()
 
