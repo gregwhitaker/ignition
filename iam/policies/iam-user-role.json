@@ -1,0 +1,17 @@
+{
+   "Statement":[
+      {
+         "Effect":"Allow",
+         "NotAction":"iam:*",
+         "Resource":"*"
+      },
+      {
+         "Effect":"Allow",
+         "Action":[
+            "iam:List*",
+            "iam:Get*"
+         ],
+         "Resource":"*"
+      }
+   ]
+}
