@@ -48,72 +48,72 @@ Configures groups and roles for administrator accounts.
 
 * Adminstrator accounts have full access to the AWS API, including IAM management.
 
-###setup-admin-role
+###Setup Adminstrator Role
 Creates a role with administrator access to the AWS API, including IAM management.
 
-	$ ./setup-admin-role.sh
+    $ python admin-role.py --setup
 
-###teardown-admin-role
+###Teardown Administrator Role
 Removes the administrator role.
 
-	$ ./teardown-admin-role.sh
+    $ python admin-role.py --teardown
 
-###setup-admin-group
+###Setup Administrator Group
 Creates a group with the administrator role assigned to it by default.
 
-	$ ./setup-admin-group.sh
+    $ python admin-group.py --setup
 
-###teardown-admin-group
+###Teardown Administrator Group
 Removes the administrator group.
 
-	$ ./teardown-admin-group.sh
+    $ python admin-group.py --teardown
 
 ##User Accounts
 Configures groups and roles for user accounts.  
 
 * User accounts have full access to the AWS API, excluding IAM management.
 
-###setup-user-role
+###Setup User Role
 Creates a role with full access to the AWS API, excluding IAM management.
 
-	$ ./setup-user-role.sh
+    $ python user-role.py --setup
 
-###teardown-user-role
+###Teardown User Role
 Removes the user role.
 
-	$ ./teardown-user-role.sh
+    $ python user-role.py --teardown
 
-###setup-user-group
+###Setup User Group
 Creates a group with the user role assigned to it by default.
 
-	$ ./setup-user-group.sh
+    $ python user-group.py --setup
 
-###teardown-user-role
+###Teardown User Group
 Removes the user group.
 
-	$ ./teardown-user-group.sh
+    $ python user-group.py --teardown
 
 ##Readonly Accounts
 Configures groups and roles for readonly accounts.
 
 * Readonly accounts have readonly access to the AWS API.
 
-###setup-readonly-role
+###Setup Readonly Role
 Creates a role with readonly access to the AWS API.
 
-	$ ./setup-readonly-role.sh
+    $ python readonly-role.py --setup
 
-###teardown-readonly-role
+###Teardown Readonly Role
 Removes the readonly role.
 
-	$ ./teardown-readonly-role.sh
+    $ python readonly-role.py --teardown
 
-###setup-readonly-group
+###Setup Readonly Group
 Creates a group with the readonly role assigned to it by default.
 
-	$ ./setup-readonly-group.sh
+    $ python readonly-group.py --setup
 
-###teardown-readonly-group
+###Teardown Readonly Group
 Removes the readonly group.
 
-	$ ./teardown-readonly-group.sh
+    $ python readonly-group.py --teardown
