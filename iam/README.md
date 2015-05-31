@@ -12,15 +12,15 @@ The IAM scripts can be used to configure the following:
 ##Account Settings
 Configures policies that are applicable to the entire AWS account.
 
-###setup-account-alias
+###Setup Account Alias
 Adds an account alias to the AWS account.  This allows you to refer to the account by a friendly name instead of the account number.
 
-    $ ./setup-account-alias.sh <alias>
+    $ python account_alias.py --setup --alias ALIAS
     
-###teardown-account-alias
+###Teardown Account Alias
 Removes the account alias from the AWS account.
 
-    $ ./teardown-account-alias.sh <alias>
+    $ python account_alias.py --teardown --alias ALIAS
 
 ###setup-account-password-policy
 Adds a default password policy to the AWS account.
