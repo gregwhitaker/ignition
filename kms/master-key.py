@@ -22,6 +22,7 @@ class MasterKey:
         :return: instance of MasterKey
         """
         if alias is None:
+            print(Fore.Green + "Alias not specified, defaulting to '" + Fore.YELLOW + "master" + Fore.Green + "'" + Fore.RESET)
             self.alias = "master"
         else:
             self.alias = alias
@@ -43,8 +44,23 @@ class MasterKey:
         self.__ensure_required_roles_created()
 
         try:
-            conn.create_key(self.__load_policy("./policies/kms-master-key.json"), 'Master Key')
-            print(Fore.GREEN + "Added account alias '" + Fore.YELLOW + self.alias + Fore.GREEN + "'" + Fore.RESET)
+            # Check to see if the requested alias is already in use before creating the key
+            aliases = conn.list_aliases()
+            for alias in aliases['Aliases']:
+                if alias['AliasName'] == 'alias/' + self.alias:
+                    error = boto.kms.exceptions.AlreadyExistsException(400, 'AlreadyExistsException')
+                    error.message = 'An alias with the name ' + alias['AliasArn'] + ' already exists'
+                    raise error
+
+            response = conn.create_key(self.__load_policy("./policies/kms-master-key.json"), 'Master Key')
+
+            key_id = response['KeyMetadata']['KeyId']
+            key_arn = response['KeyMetadata']['Arn']
+
+            conn.create_alias("alias/" + self.alias, key_id)
+
+            print(Fore.GREEN + "Added account master key '" + Fore.YELLOW + self.alias + Fore.GREEN + "' to region '" +
+                  Fore.YELLOW + self.region + Fore.GREEN + "'" + Fore.RESET)
         except boto.exception.BotoServerError as error:
             log_error(error)
             raise
@@ -53,36 +69,70 @@ class MasterKey:
         """
         Disables the default master encryption key.  Master keys cannot be deleted once they are created.
         """
+        conn = boto.kms.connect_to_region(self.region)
+
+        if conn is None:
+            error = boto.exception.BotoServerError(404, "Not Found", message="KMS region " + self.region + " does not exist!")
+            log_error(error)
+            raise error
+
         try:
-            print(Fore.GREEN + "Removed account alias '" + Fore.YELLOW + self.alias + Fore.GREEN + "'" + Fore.RESET)
+            aliases = conn.list_aliases()
+
+            for alias in aliases['Aliases']:
+                if alias['AliasName'] == 'alias/' + self.alias:
+                    conn.delete_alias("alias/" + self.alias)
+                    conn.disable_key(alias['TargetKeyId'])
+                    break
+
+            print(Fore.GREEN + "Disabled account master key '" + Fore.YELLOW + self.alias + Fore.GREEN + "' in region '" +
+                  Fore.YELLOW + self.region + Fore.GREEN + "'" + Fore.RESET)
         except boto.exception.BotoServerError as error:
             log_error(error)
             raise
 
-    @staticmethod
-    def __load_policy(policy_path):
+    def __load_policy(self, policy_path):
         with open(policy_path, "r") as policyFile:
             data = policyFile.read().replace('\n', '')
+
+        self.__ensure_required_roles_created()
+
+        admin_role_arn = self.required_roles['Administrator']
+        user_role_arn = self.required_roles['User']
+        account_number = admin_role_arn.lstrip("arn:aws:iam::").split(":").__getitem__(0).strip(" ")
+
+        # Fill out the policy template with the appropriate ARNs
+        data = data.replace("%%ADMINISTRATOR_ROLE_ARN%%", admin_role_arn)
+        data = data.replace("%%USER_ROLE_ARN%%", user_role_arn)
+        data = data.replace("%%ACCOUNT_NUMBER%%", account_number)
+
         return data
 
-    @staticmethod
-    def __ensure_required_roles_created():
+    def __ensure_required_roles_created(self):
         conn = boto.iam.IAMConnection()
+
         roles = conn.list_roles()
 
-        if not roles.__contains__('Administrator'):
+        self.required_roles = {}
+        for role in roles.list_roles_result.roles:
+            if role['role_name'] == 'Administrator':
+                self.required_roles['Administrator'] = role['arn']
+            elif role['role_name'] == 'User':
+                self.required_roles['User'] = role['arn']
+
+        # Create the Administrator role if it does not exist
+        if not self.required_roles.__contains__('Administrator'):
             admin_role = AdminRole()
-            admin_role.setup()
+            response = admin_role.setup()
 
-        if not roles.__contains__('User'):
+            self.required_roles['Administrator'] = response['arn']
+
+        # Create the User role if it does not exist
+        if not self.required_roles.__contains__('User'):
             user_role = UserRole()
-            user_role.setup()
+            response = user_role.setup()
 
-    def __get_admin_arn(self):
-        print ""
-
-    def __get_user_arn(self):
-        print ""
+            self.required_roles['User'] = response['arn']
 
 if __name__ == '__main__':
     if __package__ is None:
@@ -107,8 +157,8 @@ if __name__ == '__main__':
     command_group.add_argument("-s", "--setup", help="Adds the default master encryption key to the account.", action="store_true")
     command_group.add_argument("-t", "--teardown", help="Disables the default master encryption key for the account.", action="store_true")
 
-    parser.add_argument("--region", action="store", dest="region", help="AWS region")
-    parser.add_argument("--alias", help="Master encryption key alias", default="master")
+    parser.add_argument("--region", required=True, action="store", dest="region", help="AWS region")
+    parser.add_argument("--alias", action="store", default="master", help="Master encryption key alias")
 
     args = parser.parse_args()
 
