@@ -21,9 +21,6 @@ class AccountAlias:
     def setup(self):
         """
         Creates the account alias.
-
-        :type alias: string
-        :param alias: account alias to create
         """
         conn = boto.iam.IAMConnection()
 
@@ -37,9 +34,6 @@ class AccountAlias:
     def teardown(self):
         """
         Removes the account alias.
-
-        :type alias: string
-        :param alias:
         """
         conn = boto.iam.IAMConnection()
 
