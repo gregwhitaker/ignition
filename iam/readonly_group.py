@@ -42,6 +42,7 @@ class ReadonlyGroup:
 
         return data
 
+
 if __name__ == '__main__':
     if __package__ is None:
         import sys

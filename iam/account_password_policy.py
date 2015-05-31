@@ -45,6 +45,7 @@ class AccountPasswordPolicy:
 
         print(Fore.GREEN + "Default Password Policy Disabled!" + Fore.RESET)
 
+
 if __name__ == '__main__':
     if __package__ is None:
         import sys

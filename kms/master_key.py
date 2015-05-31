@@ -134,6 +134,7 @@ class MasterKey:
 
             self.required_roles['User'] = response['arn']
 
+
 if __name__ == '__main__':
     if __package__ is None:
         import sys

@@ -54,13 +54,13 @@ class ReadonlyRole:
 
         return data
 
+
 if __name__ == '__main__':
     if __package__ is None:
         import sys
         from os import path
         sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
         from utils.logging import log_error
-
 
         # Initializing colorama because this method is currently being called
         # as a top-level script and not a module.
