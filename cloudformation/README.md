@@ -7,12 +7,12 @@ You can deploy and update a template and its associated collection of resources 
 The IAM scripts can be used to configure the following:
 * S3 Bucket for Nested Stacks (Reusable CloudFormation Templates)
 
-##setup-nested-stacks
+##Setup Nested Stacks
 Creates an S3 bucket to hold CloudFormation nested stacks.
 
-    ./setup-nested-stacks.sh <bucket>
+    $ python nested-stacks.py --setup --bucket BUCKET
 
-##teardown-nested-stacks
+##Teardown Nested Stacks
 Deletes the S3 bucket that holds the CloudFormation nested stacks.
 
-    ./teardown-nested-stacks.sh
+    $ python nested-stacks.py --teardown --bucket BUCKET
