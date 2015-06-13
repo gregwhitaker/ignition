@@ -10,4 +10,4 @@ Creates a default set of security groups.
 ##Teardown Security Groups
 Removes the default set of security groups.
 
-    $ python security_groups.py --setup --region REGION [--profile PROFILE]
+    $ python security_groups.py --teardown --region REGION [--profile PROFILE]
