@@ -10,7 +10,7 @@ Creates a master encryption key in KMS.
 If a key alias is not supplied the script assumes an alias of "master".
 
 ##Teardown Master Key
-Disables a master encryption key in KMS.
+Disables a master encryption key in KMS and deletes the alias so that it may be used by another key.
 
 	$ python master_key.py --teardown --region REGION [--alias ALIAS]
 
