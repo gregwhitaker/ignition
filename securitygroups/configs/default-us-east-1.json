@@ -1,0 +1,294 @@
+{
+  "region": "us-east-1",
+  "securityGroups": [
+    {
+      "category": "Application",
+      "groupName": "app-class1",
+      "description": "Allows traffic on application ports for Class 1 applications",
+      "rules": {
+        "inbound": [
+          {
+            "type": "cidr",
+            "protocol": "TCP",
+            "portRange": "8080",
+            "source": "%%VPC_CIDR%%"
+          }
+        ],
+        "outbound": [
+          {
+            "type": "cidr",
+            "protocol": "All",
+            "portRange": "All",
+            "source": "0.0.0.0/0"
+          }
+        ]
+      }
+    },
+    {
+      "category": "Application",
+      "groupName": "app-class2",
+      "description": "Allows traffic on application ports for Class 2 applications",
+      "rules": {
+        "inbound": [
+          {
+            "type": "cidr",
+            "protocol": "TCP",
+            "portRange": "8080",
+            "source": "%%VPC_CIDR%%"
+          }
+        ],
+        "outbound": [
+          {
+            "type": "cidr",
+            "protocol": "All",
+            "portRange": "All",
+            "source": "0.0.0.0/0"
+          }
+        ]
+      }
+    },
+    {
+      "category": "Application",
+      "groupName": "app-class3",
+      "description": "Allows traffic on application ports for Class 3 applications",
+      "rules": {
+        "inbound": [
+          {
+            "type": "cidr",
+            "protocol": "TCP",
+            "portRange": "8080",
+            "source": "%%VPC_CIDR%%"
+          }
+        ],
+        "outbound": [
+          {
+            "type": "cidr",
+            "protocol": "All",
+            "portRange": "All",
+            "source": "0.0.0.0/0"
+          }
+        ]
+      }
+    },
+    {
+      "category": "Database",
+      "groupName": "db-class1",
+      "description": "Allows Class 1 applications to communicate with Class 1 databases",
+      "rules": {
+        "inbound": [
+          {
+            "type": "sg-reference",
+            "protocol": "TCP",
+            "portRange": "0-65535",
+            "source": "app-class1"
+          }
+        ],
+        "outbound": [
+          {
+            "type": "cidr",
+            "protocol": "All",
+            "portRange": "All",
+            "source": "0.0.0.0/0"
+          }
+        ]
+      }
+    },
+    {
+      "category": "Database",
+      "groupName": "db-class2",
+      "description": "Allows Class 2 applications to communicate with Class 2 databases",
+      "rules": {
+        "inbound": [
+          {
+            "type": "sg-reference",
+            "protocol": "TCP",
+            "portRange": "0-65535",
+            "source": "app-class2"
+          }
+        ],
+        "outbound": [
+          {
+            "type": "cidr",
+            "protocol": "All",
+            "portRange": "All",
+            "source": "0.0.0.0/0"
+          }
+        ]
+      }
+    },
+    {
+      "category": "Database",
+      "groupName": "db-class3",
+      "description": "Allows Class 3 applications to communicate with Class 3 databases",
+      "rules": {
+        "inbound": [
+          {
+            "type": "sg-reference",
+            "protocol": "TCP",
+            "portRange": "0-65535",
+            "source": "app-class3"
+          }
+        ],
+        "outbound": [
+          {
+            "type": "cidr",
+            "protocol": "All",
+            "portRange": "All",
+            "source": "0.0.0.0/0"
+          }
+        ]
+      }
+    },
+    {
+      "category": "ELB",
+      "groupName": "elb-edge",
+      "description": "Allows HTTPS traffic from the internet",
+      "rules": {
+        "inbound": [
+          {
+            "type": "cidr",
+            "protocol": "TCP",
+            "portRange": "443",
+            "source": "0.0.0.0/0"
+          }
+        ],
+        "outbound": [
+          {
+            "type": "cidr",
+            "protocol": "All",
+            "portRange": "All",
+            "source": "0.0.0.0/0"
+          }
+        ]
+      }
+    },
+    {
+      "category": "ELB",
+      "groupName": "elb-edge-trusted",
+      "description": "Allows HTTP and HTTPS traffic from trusted networks",
+      "rules": {
+        "inbound": [
+          {
+            "type": "cidr",
+            "protocol": "TCP",
+            "portRange": "80",
+            "source": "%%TRUSTED_CIDR%%"
+          },
+          {
+            "type": "cidr",
+            "protocol": "TCP",
+            "portRange": "443",
+            "source": "%%TRUSTED_CIDR%%"
+          }
+        ],
+        "outbound": [
+          {
+            "type": "cidr",
+            "protocol": "All",
+            "portRange": "All",
+            "source": "0.0.0.0/0"
+          }
+        ]
+      }
+    },
+    {
+      "category": "Platform",
+      "groupName": "asgard",
+      "description": "Allows Asgard to check the health of applications",
+      "rules": {
+        "inbound": [
+          {
+            "type": "sg-reference",
+            "protocol": "TCP",
+            "portRange": "8080",
+            "source": "asgard"
+          }
+        ],
+        "outbound": [
+          {
+            "type": "cidr",
+            "protocol": "All",
+            "portRange": "All",
+            "source": "0.0.0.0/0"
+          }
+        ]
+      }
+    },
+    {
+      "category": "Platform",
+      "groupName": "eureka",
+      "description": "Allows Eureka to check the health of applications",
+      "rules": {
+        "inbound": [
+          {
+            "type": "cidr",
+            "protocol": "TCP",
+            "portRange": "8080",
+            "source": "%%VPC_CIDR%%"
+          },
+          {
+            "type": "cidr",
+            "protocol": "TCP",
+            "portRange": "8077",
+            "source": "%%VPC_CIDR%%"
+          }
+        ],
+        "outbound": [
+          {
+            "type": "cidr",
+            "protocol": "All",
+            "portRange": "All",
+            "source": "0.0.0.0/0"
+          }
+        ]
+      }
+    },
+    {
+      "category": "Platform",
+      "groupName": "infrastructure",
+      "description": "Allows communication between AWS and trusted networks",
+      "rules": {
+        "inbound": [
+          {
+            "type": "cidr",
+            "protocol": "TCP",
+            "portRange": "22",
+            "source": "%%TRUSTED_CIDR%%"
+          },
+          {
+            "type": "cidr",
+            "protocol": "TCP",
+            "portRange": "80",
+            "source": "%%TRUSTED_CIDR%%"
+          },
+          {
+            "type": "cidr",
+            "protocol": "TCP",
+            "portRange": "8080",
+            "source": "%%TRUSTED_CIDR%%"
+          },
+          {
+            "type": "cidr",
+            "protocol": "TCP",
+            "portRange": "8077",
+            "source": "%%TRUSTED_CIDR%%"
+          },
+          {
+            "type": "sg-reference",
+            "protocol": "TCP",
+            "portRange": "8077",
+            "source": "infrastructure"
+          }
+        ],
+        "outbound": [
+          {
+            "type": "cidr",
+            "protocol": "All",
+            "portRange": "All",
+            "source": "0.0.0.0/0"
+          }
+        ]
+      }
+    }
+  ]
+}
