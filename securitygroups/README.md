@@ -5,9 +5,9 @@ A security group acts as a virtual firewall that controls the traffic for one or
 ##Setup Security Groups
 Creates a default set of security groups.
 
-    $ python security_groups.py --setup --region REGION [--vpc-id VPC_ID] [--profile PROFILE]
+    $ python securitygroups.py --setup --region REGION [--vpc-id VPC_ID] [--profile PROFILE]
 
 ##Teardown Security Groups
 Removes the default set of security groups.
 
-    $ python security_groups.py --teardown --region REGION [--profile PROFILE]
+    $ python securitygroups.py --teardown --region REGION [--profile PROFILE]
