@@ -1,2 +1,1 @@
-VPC Configuration
-===
+# VPC Configuration
